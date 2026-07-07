@@ -1,0 +1,47 @@
+{
+  "name": "judoka-network",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Judo belt verification and social network platform - Full-stack TypeScript monorepo",
+  "workspaces": [
+    "frontend",
+    "backend",
+    "shared"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "test": "npm run test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "format": "prettier --write \"**/*.{ts,tsx,js,jsx,json,md}\"",
+    "typecheck": "npm run typecheck --workspaces",
+    "clean": "rm -rf node_modules frontend/node_modules backend/node_modules shared/node_modules frontend/dist backend/dist"
+  },
+  "devDependencies": {
+    "prettier": "^3.0.0",
+    "@commitlint/cli": "^18.0.0",
+    "@commitlint/config-conventional": "^18.0.0",
+    "husky": "^8.0.0"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "author": "Martin Emil Brabenec",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mrmartin1998/judoka-network.git"
+  },
+  "keywords": [
+    "judo",
+    "martial-arts",
+    "social-network",
+    "belt-verification",
+    "typescript",
+    "react",
+    "nestjs",
+    "postgresql",
+    "monorepo"
+  ]
+}
