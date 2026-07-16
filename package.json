@@ -4,8 +4,8 @@
   "private": true,
   "description": "Judo belt verification and social network platform - Full-stack TypeScript monorepo",
   "workspaces": [
-    "frontend",
-    "backend",
+    "apps/frontend",
+    "apps/backend",
     "shared"
   ],
   "scripts": {
