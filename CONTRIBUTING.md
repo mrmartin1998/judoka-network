@@ -55,14 +55,14 @@ npm install
 
 3. Set up environment variables
 ```bash
-cp frontend/.env.example frontend/.env
-cp backend/.env.example backend/.env
+cp apps/frontend/.env.example apps/frontend/.env
+cp apps/backend/.env.example apps/backend/.env
 # Edit .env files with your credentials
 ```
 
 4. Run database migrations
 ```bash
-cd backend
+cd apps/backend
 npx prisma migrate dev
 ```
 
@@ -159,22 +159,23 @@ We follow the Conventional Commits specification. See [COMMIT_CONVENTIONS.md](CO
 
 ```
 judoka-network/
-├── frontend/          # React application
-│   ├── src/
-│   │   ├── components/    # Reusable UI components
-│   │   ├── pages/         # Page components
-│   │   ├── hooks/         # Custom React hooks
-│   │   ├── services/      # API services
-│   │   ├── utils/         # Utility functions
-│   │   └── types/         # Frontend-specific types
-│   └── public/            # Static assets
-├── backend/           # NestJS API
-│   ├── src/
-│   │   ├── modules/       # Feature modules
-│   │   ├── common/        # Shared code
-│   │   ├── config/        # Configuration
-│   │   └── prisma/        # Database schema
-│   └── test/              # E2E tests
+├── apps/
+│   ├── frontend/      # React application
+│   │   ├── src/
+│   │   │   ├── components/    # Reusable UI components
+│   │   │   ├── pages/         # Page components
+│   │   │   ├── hooks/         # Custom React hooks
+│   │   │   ├── services/      # API services
+│   │   │   ├── utils/         # Utility functions
+│   │   │   └── types/         # Frontend-specific types
+│   │   └── public/            # Static assets
+│   └── backend/       # NestJS API
+│       ├── src/
+│       │   ├── modules/       # Feature modules
+│       │   ├── common/        # Shared code
+│       │   ├── config/        # Configuration
+│       │   └── prisma/        # Database schema
+│       └── test/              # E2E tests
 ├── shared/            # Shared TypeScript code
 │   ├── types/             # Shared interfaces/types
 │   ├── constants/         # Shared constants
@@ -187,15 +188,15 @@ judoka-network/
 This is a monorepo using npm workspaces. Keep these points in mind:
 
 - Shared types go in `shared/types`
-- Install workspace dependencies from root: `npm install <package> --workspace=frontend`
-- Run commands in specific workspace: `npm run dev --workspace=backend`
+- Install workspace dependencies from root: `npm install <package> --workspace=apps/frontend`
+- Run commands in specific workspace: `npm run dev --workspace=apps/backend`
 - Changes to `shared/` affect all workspaces
 
 ## Database Changes
 
 When modifying the database schema:
 
-1. Update `backend/prisma/schema.prisma`
+1. Update `apps/backend/prisma/schema.prisma`
 2. Create migration: `npx prisma migrate dev --name descriptive-name`
 3. Update relevant TypeScript types in `shared/types`
 4. Update seed data if necessary
