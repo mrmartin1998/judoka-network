@@ -71,17 +71,25 @@ Judoka Network is a clone of Beltchecker (BJJ belt verification platform) but de
 
 ```
 judoka-network/
-├── frontend/          # React application
-│   ├── src/
-│   ├── public/
-│   └── package.json
-├── backend/           # NestJS API
-│   ├── src/
-│   ├── prisma/
-│   └── package.json
+├── apps/
+│   ├── frontend/      # React application (Vite + React 18)
+│   │   ├── src/
+│   │   │   ├── components/
+│   │   │   ├── pages/
+│   │   │   ├── hooks/
+│   │   │   └── lib/
+│   │   ├── public/
+│   │   └── package.json
+│   └── backend/       # NestJS API
+│       ├── src/
+│       │   ├── modules/
+│       │   └── common/
+│       ├── prisma/
+│       └── package.json
 ├── shared/            # Shared TypeScript code
-│   ├── types/
-│   ├── constants/
+│   ├── src/
+│   │   ├── types/
+│   │   └── constants/
 │   └── package.json
 ├── .github/           # GitHub workflows & templates
 ├── package.json       # Root workspace config
@@ -112,11 +120,11 @@ npm install
 
 3. Set up environment variables
 ```bash
-# Frontend (.env in frontend/)
-cp frontend/.env.example frontend/.env
+# Frontend (.env in apps/frontend/)
+cp apps/frontend/.env.example apps/frontend/.env
 
-# Backend (.env in backend/)
-cp backend/.env.example backend/.env
+# Backend (.env in apps/backend/)
+cp apps/backend/.env.example apps/backend/.env
 ```
 
 Edit the `.env` files with your configuration:
@@ -127,7 +135,7 @@ Edit the `.env` files with your configuration:
 
 4. Run database migrations
 ```bash
-cd backend
+cd apps/backend
 npx prisma migrate dev
 ```
 
@@ -137,8 +145,8 @@ npx prisma migrate dev
 npm run dev
 
 # Or individually:
-cd frontend && npm run dev  # Frontend on http://localhost:5173
-cd backend && npm run dev   # Backend on http://localhost:3000
+cd apps/frontend && npm run dev  # Frontend on http://localhost:5173
+cd apps/backend && npm run dev   # Backend on http://localhost:3000
 ```
 
 ## 📦 Available Scripts
@@ -171,8 +179,8 @@ cd backend && npm run dev   # Backend on http://localhost:3000
 npm test
 
 # Specific workspace
-npm test --workspace=frontend
-npm test --workspace=backend
+npm test --workspace=apps/frontend
+npm test --workspace=apps/backend
 ```
 
 ## 🌍 Environment Variables
@@ -193,14 +201,14 @@ npm test --workspace=backend
 
 ### Frontend (Vercel)
 ```bash
-cd frontend
+cd apps/frontend
 npm run build
 # Deploy to Vercel
 ```
 
 ### Backend (Railway/Render)
 ```bash
-cd backend
+cd apps/backend
 npm run build
 # Deploy to Railway or Render
 ```

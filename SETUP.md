@@ -5,11 +5,11 @@
 Your Judoka Network monorepo is ready to go! Here's what was set up:
 
 ### 📁 Structure Created
-- ✅ **frontend/** - React + Vite + TypeScript
-- ✅ **backend/** - NestJS + PostgreSQL + Prisma
+- ✅ **apps/frontend/** - React 18 + Vite + TypeScript + TailwindCSS
+- ✅ **apps/backend/** - NestJS + PostgreSQL + Prisma ORM
 - ✅ **shared/** - Shared TypeScript types & constants
-- ✅ **. github/** - Issue templates, PR templates, workflows
-- ✅ Root npm workspace configuration
+- ✅ **.github/** - Issue templates, PR templates, workflows
+- ✅ Root npm workspace configuration (Turborepo)
 
 ### 🔧 Configuration Files
 - ✅ TypeScript configs for each workspace
@@ -36,12 +36,12 @@ npm install
 ### 2. Set Up Environment Variables
 ```bash
 # Frontend
-cp frontend/.env.example frontend/.env
-# Edit frontend/.env with your Google Client ID and API URL
+cp apps/frontend/.env.example apps/frontend/.env
+# Edit apps/frontend/.env with your Google Client ID and API URL
 
 # Backend
-cp backend/.env.example backend/.env
-# Edit backend/.env with your database URL, JWT secret, and Google OAuth credentials
+cp apps/backend/.env.example apps/backend/.env
+# Edit apps/backend/.env with your database URL, JWT secret, and Google OAuth credentials
 ```
 
 ### 3. Set Up Database
@@ -51,7 +51,7 @@ cp backend/.env.example backend/.env
 # Or install PostgreSQL locally
 
 # Then create the database schema (we'll do this next)
-cd backend
+cd apps/backend
 npx prisma init  # Already done
 # Design your schema in prisma/schema.prisma
 npx prisma migrate dev --name init
@@ -74,8 +74,8 @@ npx prisma migrate dev --name init
 npm run dev
 
 # Option B: Start individually in separate terminals
-cd frontend && npm run dev  # http://localhost:5173
-cd backend && npm run dev   # http://localhost:3000
+cd apps/frontend && npm run dev  # http://localhost:5173
+cd apps/backend && npm run dev   # http://localhost:3000
 ```
 
 ---
@@ -91,16 +91,16 @@ cd backend && npm run dev   # http://localhost:3000
 
 ### Frontend Workspace
 ```bash
-npm run dev --workspace=frontend
-npm run build --workspace=frontend
-npm run lint --workspace=frontend
+npm run dev --workspace=apps/frontend
+npm run build --workspace=apps/frontend
+npm run lint --workspace=apps/frontend
 ```
 
 ### Backend Workspace
 ```bash
-npm run dev --workspace=backend
-npm run build --workspace=backend
-npm run test --workspace=backend
+npm run dev --workspace=apps/backend
+npm run build --workspace=apps/backend
+npm run test --workspace=apps/backend
 ```
 
 ### Shared Workspace
@@ -157,28 +157,29 @@ git commit -m "docs: update README installation steps"
 
 ```
 judoka-network/
-├── frontend/
-│   ├── src/
-│   │   ├── components/     # React components
-│   │   ├── pages/          # Page components
-│   │   ├── hooks/          # Custom hooks
-│   │   ├── services/       # API calls
-│   │   └── types/          # Frontend-specific types
-│   ├── public/             # Static assets
-│   ├── .env.example
-│   ├── package.json
-│   └── tsconfig.json
-│
-├── backend/
-│   ├── src/
-│   │   ├── modules/        # Feature modules
-│   │   ├── common/         # Shared backend code
-│   │   └── config/         # Configuration
-│   ├── prisma/
-│   │   └── schema.prisma   # Database schema
-│   ├── .env.example
-│   ├── package.json
-│   └── tsconfig.json
+├── apps/
+│   ├── frontend/
+│   │   ├── src/
+│   │   │   ├── components/     # React components
+│   │   │   ├── pages/          # Page components
+│   │   │   ├── hooks/          # Custom hooks
+│   │   │   ├── services/       # API calls
+│   │   │   └── types/          # Frontend-specific types
+│   │   ├── public/             # Static assets
+│   │   ├── .env.example
+│   │   ├── package.json
+│   │   └── tsconfig.json
+│   │
+│   └── backend/
+│       ├── src/
+│       │   ├── modules/        # Feature modules
+│       │   ├── common/         # Shared backend code
+│       │   └── config/         # Configuration
+│       ├── prisma/
+│       │   └── schema.prisma   # Database schema
+│       ├── .env.example
+│       ├── package.json
+│       └── tsconfig.json
 │
 ├── shared/
 │   ├── src/
