@@ -9,7 +9,7 @@ Your Judoka Network monorepo is ready to go! Here's what was set up:
 - ✅ **apps/backend/** - NestJS + PostgreSQL + Prisma ORM
 - ✅ **shared/** - Shared TypeScript types & constants
 - ✅ **.github/** - Issue templates, PR templates, workflows
-- ✅ Root npm workspace configuration (Turborepo)
+- ✅ Root npm workspace configuration
 
 ### 🔧 Configuration Files
 - ✅ TypeScript configs for each workspace
