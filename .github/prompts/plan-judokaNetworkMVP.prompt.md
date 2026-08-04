@@ -2,14 +2,14 @@
 
 ## 🎯 PROGRESS TRACKER
 
-**Last Updated:** July 27, 2026  
-**Overall Completion:** 4/50+ tasks (8%)  
-**Current Sprint:** Week 1 - Foundation & Cleanup  
-**Target MVP Date:** September 2026 (8 weeks)
+**Last Updated:** August 3, 2026  
+**Overall Completion:** 12/50+ tasks (24%) - *Updated after schema/types audit*  
+**Current Sprint:** Phase 0 - Foundation & Cleanup  
+**Target MVP Date:** September 2026
 
 ### ✅ COMPLETED TASKS
 1. **Project Scaffolding** ✅
-   - Turborepo monorepo structure created
+   - npm workspaces monorepo structure created
    - React 18 + Vite frontend initialized
    - NestJS backend initialized
    - Git workflow established (master/develop)
@@ -43,46 +43,62 @@
    - Prisma Client v5.22.0 generated successfully
    - Connection verified via transaction pooler (IPv4)
 
+6. **Testing Infrastructure Setup** ✅
+   - Branch: `chore/testing-infrastructure` [ecef2e75]
+   - Vitest v4.1.10 installed for both backend and frontend
+   - Backend: Vitest + @nestjs/testing + Node environment
+   - Frontend: Vitest + @testing-library/react + jsdom environment
+   - Sample tests created and passing (2 backend, 2 frontend)
+   - Test scripts configured in package.json files
+   - Coverage reporting with v8 provider
+
+**Note:** Schema design in Task 4 also included types, constants, and DTOs that satisfy requirements in Phases 1-3, 5. These have been marked as complete in their respective phases.
+
 ### 🔄 IN PROGRESS
-- **None** - Ready to move to Task 0.4
+- **None** - Ready to move to Task 0.5
 
 ### ⏳ NEXT UP
-- **Branch:** `chore/setup-testing-infrastructure` - Configure Vitest and React Testing Library
+- **Task 0.5:** Environment variables setup (.env files)
+- **Task 0.6:** Verify npm workspaces build pipeline
 
 ### ⏳ UP NEXT (This Week)
 1. ✅ ~~Merge README fix PR~~
 2. ✅ ~~Clean up duplicate folder structure~~
 3. ✅ ~~Design Prisma database schema~~
 4. ✅ ~~Set up Supabase database~~
-5. 🔄 Set up testing infrastructure (NEXT)
-6. Configure environment variables properly
+5. ✅ ~~Set up testing infrastructure~~
+6. ⏳ Configure environment variables properly (NEXT)
+7. ⏳ Verify npm workspaces build pipeline
 
 ---
 
 ## 🗂️ DEVELOPMENT PHASES
 
-### Phase 0: Foundation & Cleanup (Week 1) 🔄
+### Phase 0: Foundation & Cleanup 🔄
 **Goal:** Clean codebase, establish infrastructure  
-**Status:** In Progress (85%)
+**Status:** In Progress (90%)
 
 - ✅ Fix README merge conflict
 - ✅ Remove duplicate folders (root frontend/, backend/, packages/types/)
 - ✅ Design complete Prisma schema (6 models, 2 enums, TypeScript types, constants)
 - ✅ Set up Supabase PostgreSQL database (manual SQL schema, Prisma Client generated)
-- ⏳ Configure testing infrastructure (Vitest + React Testing Library)
+- ✅ Configure testing infrastructure (Vitest for both workspaces)
 - ⏳ Set up environment variables properly
-- ⏳ Verify Turborepo build pipeline
+- ⏳ Verify npm workspaces build pipeline
+- ⏳ Merge testing infrastructure to develop
 
-### Phase 1: Authentication System (Week 2-3) ⏳
+### Phase 1: Authentication System ⏳
 **Goal:** Google OAuth + JWT auth working end-to-end  
-**Status:** Not Started (0%)
+**Status:** Foundation Complete (35%)
 
 **Backend Tasks:**
-- [ ] Install Passport + Google OAuth strategy
+- [x] Install authentication dependencies (passport, @nestjs/passport, passport-google-oauth20, @nestjs/jwt, bcrypt)
+- [x] User model in Prisma (username, email, googleId, avatar) - **COMPLETE**
+- [x] CORS configuration - **COMPLETE** (configured in main.ts)
+- [ ] Implement Passport Google OAuth strategy configuration
 - [ ] Create Auth module (login, register, refresh token)
 - [ ] JWT token generation with 7-day expiry
 - [ ] Auth middleware for protected routes
-- [ ] User model in Prisma (username, email, googleId, avatar)
 - [ ] Write auth API tests
 
 **Frontend Tasks:**
@@ -95,18 +111,15 @@
 - [ ] Write auth component tests
 
 **Shared Tasks:**
-- [ ] Auth types (User, AuthResponse, LoginDTO)
-- [ ] Zod validation schemas for auth
+- [x] Auth types (User, AuthResponse, LoginDTO) - **COMPLETE** (in shared/src/types/index.ts)
+- [x] UpdateProfileDTO - **COMPLETE**
+- [ ] Zod validation schemas for auth (Zod installed, schemas need implementation)
 
 ### Phase 2: User Profiles & Belt System (Week 4-5) ⏳
 **Goal:** Users can create profiles and track belt progression  
-**Status:** Not Started (0%)
+**Status:** Database Schema Complete (15%)
 
-**Database Schema:**
-- [ ] User profile fields (bio, location, academy, current belt)
-- [ ] BeltProgression model (userId, belt color, dan rank, promoted date, promoted by)
-- [ ] Academy model (name, location, instructor)
-- [ ] Relationships between models
+**Note:** Database schema, types, and constants already implemented in Phase 0!
 
 **Backend Tasks:**
 - [ ] User module (CRUD operations)
@@ -122,21 +135,19 @@
 - [ ] Belt progression timeline component
 - [ ] Add belt promotion form
 - [ ] Image upload component
-- [ ] Belt color constants (white → 10th dan)
 - [ ] Write profile component tests
 
 **Shared Tasks:**
-- [ ] Profile types (UserProfile, BeltProgression)
-- [ ] Belt system constants (colors, dan ranks)
-- [ ] Validation schemas
+- [x] Profile types (UserProfile, BeltProgression) - **COMPLETE** (in shared/src/types/index.ts)
+- [x] Belt system constants (BELT_COLORS, BELT_ORDER, DAN_RANKS) - **COMPLETE** (in shared/src/constants/index.ts)
+- [x] CreateBeltProgressionDTO - **COMPLETE**
+- [ ] Validation schemas (Zod validation needs implementation)
 
 ### Phase 3: Community Verification System (Week 6) ⏳
 **Goal:** Users can verify each other's belt ranks  
-**Status:** Not Started (0%)
+**Status:** Database Schema Complete (10%)
 
-**Database Schema:**
-- [ ] Verification model (userId, verifierId, beltProgressionId, status, comment)
-- [ ] Verification status enum (pending, approved, disputed)
+**Note:** Verification model and VerificationStatus enum already implemented in Phase 0!
 
 **Backend Tasks:**
 - [ ] Verification endpoints (POST, GET, PATCH)
@@ -170,11 +181,12 @@
 
 ### Phase 5: Achievements & Stats (Week 8) ⏳
 **Goal:** Basic achievement badges and user statistics  
-**Status:** Not Started (0%)
+**Status:** Database Schema & Constants Complete (20%)
 
-**Database Schema:**
-- [ ] Achievement model (name, description, icon, criteria)
-- [ ] UserAchievement model (userId, achievementId, earned date)
+**Note:** Achievement models and constants already implemented in Phase 0!
+- ✅ Achievement & UserAchievement models (in schema.prisma)
+- ✅ ACHIEVEMENT_CATEGORIES constants
+- ✅ Predefined ACHIEVEMENTS (5 achievements)
 
 **Backend Tasks:**
 - [ ] Achievement system logic
@@ -192,48 +204,47 @@
 **Goal:** Production-ready MVP  
 **Status:** Not Started (0%)
 
+**Testing & Optimization:**
 - [ ] Final testing (E2E with Playwright)
 - [ ] Performance optimization
-- [ ] Security audit (helmet, rate limiting, CORS)
+- [ ] Security audit (helmet, rate limiting)
 - [ ] SEO meta tags
 - [ ] Error boundaries
 - [ ] Loading states and skeletons
-- [ ] Deploy backend to Railway/Render
+
+**Deployment:**
 - [ ] Deploy frontend to Vercel
+- [ ] Deploy backend (Choose: Vercel, Railway, or Render)
+- [ ] Configure production environment variables
+- [ ] Set up production Supabase database
+- [ ] Configure Prisma for production
 - [ ] Set up monitoring (Sentry)
+
+**Launch Prep:**
 - [ ] Create demo account with mock data
 - [ ] Take screenshots for README
 - [ ] Update README with live demo link
+- [ ] Create demo video (optional)
 
 ---
 
 ## 🚨 CRITICAL ISSUES & BLOCKERS
 
 ### Severity: Critical 🔴
-1. **Duplicate Folder Structure**
-   - **Issue:** Both `apps/` and root-level `frontend/`, `backend/`, `shared/` exist
-   - **Impact:** Confusion about which is source of truth, wasted space
-   - **Fix:** Delete root-level folders, keep only `apps/` structure
-   - **Status:** ⏳ Pending
+**All critical blockers resolved! ✅**
 
-2. **Empty Prisma Schema**
-   - **Issue:** `schema.prisma` has no models defined
-   - **Impact:** Can't start building features
-   - **Fix:** Design full schema before Phase 1
-   - **Status:** ✅ RESOLVED - Schema complete with all models
+~~1. **Duplicate Folder Structure**~~
+   - **Status:** ✅ RESOLVED - Root-level folders deleted, clean `apps/` structure
 
-3. **No Database Configured**
-   - **Issue:** No PostgreSQL instance set up
-   - **Impact:** Can't run migrations or test backend
-   - **Fix:** Create Supabase project, add DATABASE_URL
-   - **Status:** ⏳ Pending
+~~2. **Empty Prisma Schema**~~
+   - **Status:** ✅ RESOLVED - Complete schema with 6 models, 2 enums
+
+~~3. **No Database Configured**~~
+   - **Status:** ✅ RESOLVED - Supabase PostgreSQL configured and migrated
 
 ### Severity: High 🟠
-1. **No Testing Infrastructure**
-   - **Issue:** Tests will return "No tests yet"
-   - **Impact:** Can't ensure code quality
-   - **Fix:** Set up Vitest + React Testing Library + Jest for backend
-   - **Status:** ⏳ Pending
+~~1. **No Testing Infrastructure**~~
+   - **Status:** ✅ RESOLVED - Vitest configured for both workspaces, tests passing
 
 2. **Socket.io Not Needed for MVP**
    - **Issue:** Socket.io installed but not used
@@ -253,6 +264,12 @@
    - **Impact:** No automated testing on PR
    - **Fix:** Configure workflow after testing setup
    - **Status:** ⏳ Pending Phase 1
+
+3. **Validation Strategy Unclear**
+   - **Issue:** Both Zod and class-validator installed
+   - **Impact:** Need to decide on single approach
+   - **Recommendation:** Use class-validator for NestJS DTOs (better integration), Zod for shared validation schemas
+   - **Status:** ⏳ Needs decision in Phase 1
 
 ---
 
@@ -456,13 +473,17 @@ enum VerificationStatus {
 
 ---
 
-#### Task 0.4: Testing Infrastructure Setup
-**Branch:** `test/setup-testing-infrastructure`  
+#### Task 0.4: Testing Infrastructure Setup ✅
+**Branch:** `chore/testing-infrastructure` [ecef2e75]  
 **Priority:** `priority: must-have`  
-**Estimated Time:** 2-3 hours
+**Completed:** August 3, 2026
 
-**Backend Testing (NestJS + Jest):**
-1. Jest already installed with NestJS
+**DECISION: Used Vitest for both backend and frontend** (not Jest)
+- Reasoning: Single test runner for monorepo, better Vite integration, faster execution
+- Impact: Consistent testing patterns across workspaces, simpler CI/CD
+
+**Backend Testing (NestJS + Vitest):**
+1. Vitest v4.1.10 installed with @nestjs/testing
 2. Create `apps/backend/test/jest.config.js`
 3. Add test scripts to `apps/backend/package.json`:
    ```json
@@ -565,14 +586,17 @@ Update root `package.json`:
 }
 ```
 
-**Commit:** `test: set up Vitest and Jest testing infrastructure`
+**Commit:** ✅ `chore: implement vitest testing infrastructure for backend and frontend` [ecef2e75]
 
 **Acceptance Criteria:**
-- ✅ Backend tests run with Jest
-- ✅ Frontend tests run with Vitest
-- ✅ Sample tests pass
-- ✅ Coverage reports work
-- ✅ Root `npm test` runs all tests
+- ✅ Backend tests run with Vitest (2 tests passing)
+- ✅ Frontend tests run with Vitest (2 tests passing)
+- ✅ Sample tests pass in both workspaces
+- ✅ Coverage reports configured with v8 provider
+- ✅ Root `npm test` runs all workspace tests
+- ✅ Test scripts configured (test, test:watch, test:ui, test:cov)
+
+**Status:** ✅ COMPLETE - Branch ready to merge to develop
 
 ---
 
@@ -636,18 +660,17 @@ CLOUDINARY_API_SECRET=your-api-secret
 
 ## 🎯 CURRENT SPRINT (Week 1)
 
-### Week 1 Goals (July 21-27, 2026)
-- [x] Fix README merge conflict (DONE)
-- [ ] Clean up duplicate folders
-- [ ] Design & implement Prisma schema
-- [ ] Set up Supabase database
-- [ ] Configure testing infrastructure
-- [ ] Set up environment variables
+### Phase 0 Progress (July 21 - August 3, 2026)
+- [x] Fix README merge conflict
+- [x] Clean up duplicate folders
+- [x] Design & implement Prisma schema
+- [x] Set up Supabase database
+- [x] Configure testing infrastructure
+- [ ] Set up environment variables (IN PROGRESS)
+- [ ] Verify npm workspaces build pipeline
+- [ ] Merge testing branch to develop
 
-### Daily Breakdown
-
-**Monday (Today):**
-- [x] README conflict fixed
+### Current Focus (August 3, 2026)
 - [ ] Create plan document (this file)
 - [ ] Clean up duplicate folders
 
@@ -727,14 +750,14 @@ CLOUDINARY_API_SECRET=your-api-secret
 ### Styling: TailwindCSS + shadcn/ui
 **Why:** Already set up, rapid development, professional components, Budget Buddy proved success
 
-### Monorepo: Turborepo + npm workspaces
-**Why:** Demonstrates enterprise architecture, shared types between frontend/backend, clean separation
+### Monorepo: npm workspaces
+**Why:** Demonstrates enterprise architecture, shared types between frontend/backend, clean separation, lightweight and built into npm
 
-### Testing: Vitest + Jest + React Testing Library
-**Why:** Fast, modern, TypeScript-first, matches Budget Buddy quality standard
+### Testing: Vitest + React Testing Library
+**Why:** Fast, modern, TypeScript-first, better Vite integration than Jest, single test runner for monorepo
 
-### Deployment: Vercel (frontend + backend)
-**Why:** Simplest deployment, free tier, environment variables easy, potential Vercel Blob for images
+### Deployment: Vercel (frontend) + Railway/Render (backend)
+**Why:** Vercel for frontend (optimal for React+Vite), Railway or Render for NestJS backend (better for long-running Node.js apps), free tiers available for both
 
 ### Real-time: Defer Socket.io to v2
 **Why:** MVP doesn't need real-time, adds complexity, can add later for notifications

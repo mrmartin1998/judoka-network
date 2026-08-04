@@ -12,6 +12,7 @@
     "outDir": "./dist",
     "incremental": true,
     "skipLibCheck": true,
+    "types": ["vitest/globals", "node"],
     "strictNullChecks": false,
     "noImplicitAny": false,
     "strictBindCallApply": false,
