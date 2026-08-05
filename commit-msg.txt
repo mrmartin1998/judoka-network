@@ -1,0 +1,13 @@
+@"
+feat(auth): create auth module structure
+
+Generated NestJS auth module, controller, and service using CLI.
+This establishes the foundation for authentication implementation.
+
+- auth.module.ts: Module container for auth functionality
+- auth.controller.ts: HTTP endpoint handler for /api/auth routes
+- auth.service.ts: Business logic layer for authentication
+- app.module.ts: Auto-imported AuthModule
+
+Task 1.2 complete - ready for Prisma service and JWT configuration.
+"@ | Out-File -FilePath commit-msg.txt -Encoding utf8; git add .; git commit -F commit-msg.txt; Remove-Item commit-msg.txt
