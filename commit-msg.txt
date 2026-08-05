@@ -1,3 +1,1 @@
-@"
-test of an example of commit messages. 
-"@ | Out-File -FilePath commit-msg.txt -Encoding utf8
+how about now? this is another test for the formating
