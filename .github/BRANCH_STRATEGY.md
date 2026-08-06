@@ -87,6 +87,7 @@ Set up these branch protection rules in GitHub:
    - [ ] Make changes
    - [ ] Run local tests: `npm run test` (or your test command)
    - [ ] Commit changes: `git add . && git commit -m "type: description"`
+   git commit -F commit-msg.txt
    - [ ] Push to remote: `git push origin feature/name`
 
 3. Creating PR to develop:
