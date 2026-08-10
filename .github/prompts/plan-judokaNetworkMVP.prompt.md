@@ -3,8 +3,8 @@
 ## 🎯 PROGRESS TRACKER
 
 **Last Updated:** August 10, 2026  
-**Overall Completion:** 16/50+ tasks (32%)  
-**Current Sprint:** Phase 1 - Authentication System (Task 1.5 complete)  
+**Overall Completion:** 17/50+ tasks (34%)  
+**Current Sprint:** Phase 1 - Authentication System (Task 1.6 complete)  
 **Target MVP Date:** September 2026
 
 ### ✅ COMPLETED TASKS
@@ -58,22 +58,23 @@
    - **Task 1.3** - Branch: `feature/task-1-3` - Set Up Prisma Service (PrismaModule as @Global(), database connection management)
    - **Task 1.4** - Branch: `feature/task-1-4` - Configure JWT Module (JwtModule.registerAsync with ConfigService, environment-based configuration)
    - **Task 1.5** - Branch: `feature/task-1-5` - Create JWT Strategy (jwt.strategy.ts with Passport, token validation, user lookup)
+   - **Task 1.6** - Branch: `feature/task-1-6` - Configure Google OAuth Strategy (google.strategy.ts with OAuth 2.0, profile extraction, user data formatting)
 
 **Note:** Schema design in Task 4 also included types, constants, and DTOs that satisfy requirements in Phases 1-3, 5. These have been marked as complete in their respective phases.
 
 ### 🔄 IN PROGRESS
-- **Task 1.6:** Configure Google OAuth Strategy (Phase 1 - Section C)
+- **Task 1.7:** Implement Google OAuth Flow - Part 1 (Phase 1 - Section C)
 
 ### ⏳ NEXT UP
-- **Task 1.7:** Implement Google OAuth Flow - Part 1
 - **Task 1.8:** Implement Google OAuth Flow - Part 2
+- **Task 1.9:** Implement JWT Token Generation
 
 ### ✅ RECENTLY COMPLETED
+- **Task 1.6:** Configure Google OAuth Strategy (google.strategy.ts with OAuth 2.0 flow)
 - **Task 1.5:** Create JWT Strategy (jwt.strategy.ts with Passport integration)
 - **Task 1.4:** Configure JWT Module (JwtModule.registerAsync with ConfigService)
 - **Task 1.3:** Set Up Prisma Service (PrismaModule as @Global())
 - **Task 1.2:** Created Auth Module Structure (auth.module.ts, auth.controller.ts, auth.service.ts)
-- **Task 1.1:** Installed authentication dependencies
 
 ---
 
@@ -94,7 +95,7 @@
 
 ### Phase 1: Authentication System ⏳
 **Goal:** Google OAuth + JWT auth working end-to-end  
-**Status:** In Progress (5/35 tasks complete - 14%)  
+**Status:** In Progress (6/35 tasks complete - 17%)  
 **Total Tasks:** 35 | **Estimated Time:** 9-10 hours
 
 ---
@@ -140,10 +141,12 @@
 
 #### ⏳ **SECTION C: Google OAuth Implementation**
 
-- [ ] **Task 1.6**: Configure Google OAuth Strategy (25 min)
-  - Create `src/auth/strategies/google.strategy.ts`
-  - Configure Google OAuth with clientID, clientSecret, callback URL
-  - Implement `validate()` method
+- [x] **Task 1.6**: Configure Google OAuth Strategy (25 min) - **COMPLETE**
+  - ✅ Created `src/auth/strategies/google.strategy.ts` extending PassportStrategy
+  - ✅ Configured Google OAuth 2.0 with clientID, clientSecret, and callbackURL
+  - ✅ Implemented `validate()` method to extract user profile data (email, name, picture)
+  - ✅ Registered GoogleStrategy in AuthModule providers
+  - ✅ Strategy handles OAuth redirect and returns formatted user data
 - [ ] **Task 1.7**: Implement Google OAuth Flow - Part 1 (15 min)
   - Create `/auth/google` route (initiates OAuth)
   - Create `/auth/google/callback` route (handles redirect)

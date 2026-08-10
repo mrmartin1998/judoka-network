@@ -1,13 +1,13 @@
-feat(auth): create JWT strategy for token validation
+feat(auth): configure Google OAuth strategy
 
-Implement Passport JWT strategy for authentication:
-- Created jwt.strategy.ts extending PassportStrategy
-- Configured JWT extraction from Bearer token in Authorization header
-- Implemented validate() method to look up users from token payload
-- Integrated PrismaService for database user lookup
-- Registered JwtStrategy as provider in AuthModule
-- Imported PassportModule for Passport infrastructure
-- Installed passport-jwt and @types/passport-jwt packages
+Implement Passport Google OAuth 2.0 strategy for authentication:
+- Created google.strategy.ts extending PassportStrategy
+- Configured Google OAuth with clientID, clientSecret, and callbackURL
+- Implemented validate() method to extract user profile data
+- Extracts email, firstName, lastName, and picture from Google profile
+- Registered GoogleStrategy as provider in AuthModule
+- Strategy handles OAuth flow and returns formatted user data
 
-Strategy validates JWT tokens and attaches user to request object.
-Verified with successful npm run build (all workspaces).
+Google OAuth strategy ready - enables "Login with Google" flow.
+Task 1.6 complete. Section C (Google OAuth Implementation) in progress.
+Verified with successful npm run build (backend workspace).
