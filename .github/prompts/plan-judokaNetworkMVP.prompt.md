@@ -3,8 +3,8 @@
 ## 🎯 PROGRESS TRACKER
 
 **Last Updated:** August 10, 2026  
-**Overall Completion:** 15/50+ tasks (30%)  
-**Current Sprint:** Phase 1 - Authentication System (Task 1.4 complete)  
+**Overall Completion:** 16/50+ tasks (32%)  
+**Current Sprint:** Phase 1 - Authentication System (Task 1.5 complete)  
 **Target MVP Date:** September 2026
 
 ### ✅ COMPLETED TASKS
@@ -52,21 +52,28 @@
    - Test scripts configured in package.json files
    - Coverage reporting with v8 provider
 
+7. **Authentication Infrastructure** ✅
+   - **Task 1.1** - Branch: `feature/task-1-1` - Installed auth packages (passport, @nestjs/passport, passport-google-oauth20, @nestjs/jwt, bcrypt, passport-jwt)
+   - **Task 1.2** - Branch: `feature/task-1-2` - Created Auth Module Structure (auth.module.ts, auth.controller.ts, auth.service.ts)
+   - **Task 1.3** - Branch: `feature/task-1-3` - Set Up Prisma Service (PrismaModule as @Global(), database connection management)
+   - **Task 1.4** - Branch: `feature/task-1-4` - Configure JWT Module (JwtModule.registerAsync with ConfigService, environment-based configuration)
+   - **Task 1.5** - Branch: `feature/task-1-5` - Create JWT Strategy (jwt.strategy.ts with Passport, token validation, user lookup)
+
 **Note:** Schema design in Task 4 also included types, constants, and DTOs that satisfy requirements in Phases 1-3, 5. These have been marked as complete in their respective phases.
 
 ### 🔄 IN PROGRESS
-- **Task 1.5:** Create JWT Strategy (Phase 1 - Section B)
+- **Task 1.6:** Configure Google OAuth Strategy (Phase 1 - Section C)
 
 ### ⏳ NEXT UP
-- **Task 1.6:** Configure Google OAuth Strategy
 - **Task 1.7:** Implement Google OAuth Flow - Part 1
+- **Task 1.8:** Implement Google OAuth Flow - Part 2
 
 ### ✅ RECENTLY COMPLETED
+- **Task 1.5:** Create JWT Strategy (jwt.strategy.ts with Passport integration)
 - **Task 1.4:** Configure JWT Module (JwtModule.registerAsync with ConfigService)
 - **Task 1.3:** Set Up Prisma Service (PrismaModule as @Global())
 - **Task 1.2:** Created Auth Module Structure (auth.module.ts, auth.controller.ts, auth.service.ts)
 - **Task 1.1:** Installed authentication dependencies
-- **Phase 0:** All foundation tasks complete (environment setup, testing, database)
 
 ---
 
@@ -87,7 +94,7 @@
 
 ### Phase 1: Authentication System ⏳
 **Goal:** Google OAuth + JWT auth working end-to-end  
-**Status:** In Progress (4/35 tasks complete - 11%)  
+**Status:** In Progress (5/35 tasks complete - 14%)  
 **Total Tasks:** 35 | **Estimated Time:** 9-10 hours
 
 ---
@@ -119,10 +126,15 @@
   - ✅ Configured signOptions with token expiration
   - ✅ Added fallback defaults for development
   - ✅ Exported AuthService for dependency injection
-- [ ] **Task 1.5**: Create JWT Strategy (20 min)
-  - Create `src/auth/strategies/jwt.strategy.ts`
-  - Implement JWT validation logic
-  - Extract user from JWT payload
+- [x] **Task 1.5**: Create JWT Strategy (20 min) - **COMPLETE**
+  - ✅ Created `src/auth/strategies/jwt.strategy.ts` extending PassportStrategy
+  - ✅ Configured JWT extraction from Authorization header (Bearer token)
+  - ✅ Implemented validate() method with PrismaService user lookup
+  - ✅ Registered JwtStrategy in AuthModule providers
+  - ✅ Imported PassportModule and PrismaModule
+  - ✅ Installed passport-jwt and @types/passport-jwt packages
+
+**Milestone 1.5 Checkpoint:** JWT token validation ready
 
 ---
 

@@ -1,11 +1,13 @@
-feat(auth): configure JWT module with async factory
+feat(auth): create JWT strategy for token validation
 
-Set up JWT authentication with environment-based configuration:
-- Imported JwtModule in AuthModule with registerAsync
-- Used ConfigService to read JWT_SECRET and JWT_EXPIRATION from .env
-- Configured signOptions with 7-day token expiration
-- Added fallback defaults for development safety
-- Exported AuthService for use in other modules
+Implement Passport JWT strategy for authentication:
+- Created jwt.strategy.ts extending PassportStrategy
+- Configured JWT extraction from Bearer token in Authorization header
+- Implemented validate() method to look up users from token payload
+- Integrated PrismaService for database user lookup
+- Registered JwtStrategy as provider in AuthModule
+- Imported PassportModule for Passport infrastructure
+- Installed passport-jwt and @types/passport-jwt packages
 
-JwtService now available for token generation and verification.
+Strategy validates JWT tokens and attaches user to request object.
 Verified with successful npm run build (all workspaces).
