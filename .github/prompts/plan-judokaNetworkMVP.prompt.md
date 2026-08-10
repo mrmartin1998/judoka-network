@@ -2,7 +2,7 @@
 
 ## 🎯 PROGRESS TRACKER
 
-**Last Updated:** August 6, 2026  
+**Last Updated:** August 10, 2026  
 **Overall Completion:** 15/50+ tasks (30%)  
 **Current Sprint:** Phase 1 - Authentication System (Task 1.4 complete)  
 **Target MVP Date:** September 2026
@@ -55,13 +55,15 @@
 **Note:** Schema design in Task 4 also included types, constants, and DTOs that satisfy requirements in Phases 1-3, 5. These have been marked as complete in their respective phases.
 
 ### 🔄 IN PROGRESS
-- **Task 1.3:** Set Up Prisma Service (Phase 1 - Section A)
+- **Task 1.5:** Create JWT Strategy (Phase 1 - Section B)
 
 ### ⏳ NEXT UP
-- **Task 1.4:** Configure JWT Module
-- **Task 1.5:** Create JWT Strategy
+- **Task 1.6:** Configure Google OAuth Strategy
+- **Task 1.7:** Implement Google OAuth Flow - Part 1
 
 ### ✅ RECENTLY COMPLETED
+- **Task 1.4:** Configure JWT Module (JwtModule.registerAsync with ConfigService)
+- **Task 1.3:** Set Up Prisma Service (PrismaModule as @Global())
 - **Task 1.2:** Created Auth Module Structure (auth.module.ts, auth.controller.ts, auth.service.ts)
 - **Task 1.1:** Installed authentication dependencies
 - **Phase 0:** All foundation tasks complete (environment setup, testing, database)
