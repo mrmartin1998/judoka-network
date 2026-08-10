@@ -52,6 +52,13 @@
    - Test scripts configured in package.json files
    - Coverage reporting with v8 provider
 
+7. **Authentication Infrastructure** ✅
+   - **Task 1.1** - Branch: `feature/task-1-1` - Installed auth packages (passport, @nestjs/passport, passport-google-oauth20, @nestjs/jwt, bcrypt, passport-jwt)
+   - **Task 1.2** - Branch: `feature/task-1-2` - Created Auth Module Structure (auth.module.ts, auth.controller.ts, auth.service.ts)
+   - **Task 1.3** - Branch: `feature/task-1-3` - Set Up Prisma Service (PrismaModule as @Global(), database connection management)
+   - **Task 1.4** - Branch: `feature/task-1-4` - Configure JWT Module (JwtModule.registerAsync with ConfigService, environment-based configuration)
+   - **Task 1.5** - Branch: `feature/task-1-5` - Create JWT Strategy (jwt.strategy.ts with Passport, token validation, user lookup)
+
 **Note:** Schema design in Task 4 also included types, constants, and DTOs that satisfy requirements in Phases 1-3, 5. These have been marked as complete in their respective phases.
 
 ### 🔄 IN PROGRESS
