@@ -2,9 +2,9 @@
 
 ## 🎯 PROGRESS TRACKER
 
-**Last Updated:** August 5, 2026  
-**Overall Completion:** 14/50+ tasks (28%)  
-**Current Sprint:** Phase 1 - Authentication System (Task 1.3 complete)  
+**Last Updated:** August 6, 2026  
+**Overall Completion:** 15/50+ tasks (30%)  
+**Current Sprint:** Phase 1 - Authentication System (Task 1.4 complete)  
 **Target MVP Date:** September 2026
 
 ### ✅ COMPLETED TASKS
@@ -85,7 +85,7 @@
 
 ### Phase 1: Authentication System ⏳
 **Goal:** Google OAuth + JWT auth working end-to-end  
-**Status:** In Progress (3/35 tasks complete - 9%)  
+**Status:** In Progress (4/35 tasks complete - 11%)  
 **Total Tasks:** 35 | **Estimated Time:** 9-10 hours
 
 ---
@@ -109,12 +109,14 @@
 
 ---
 
-#### ⏳ **SECTION B: JWT Configuration**
+#### ✅ **SECTION B: JWT Configuration**
 
-- [ ] **Task 1.4**: Configure JWT Module (10 min)
-  - Import JwtModule in AuthModule with async config
-  - Read JWT_SECRET and JWT_EXPIRATION from .env
-  - Register JWT as a provider
+- [x] **Task 1.4**: Configure JWT Module (10 min) - **COMPLETE**
+  - ✅ Imported JwtModule in AuthModule with registerAsync
+  - ✅ Used ConfigService to read JWT_SECRET and JWT_EXPIRATION from .env
+  - ✅ Configured signOptions with token expiration
+  - ✅ Added fallback defaults for development
+  - ✅ Exported AuthService for dependency injection
 - [ ] **Task 1.5**: Create JWT Strategy (20 min)
   - Create `src/auth/strategies/jwt.strategy.ts`
   - Implement JWT validation logic
