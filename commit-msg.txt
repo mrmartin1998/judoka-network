@@ -1,11 +1,11 @@
-feat(prisma): set up Prisma service for database access
+feat(auth): configure JWT module with async factory
 
-Create Prisma service to manage database connections:
-- Created prisma.service.ts extending PrismaClient
-- Implemented onModuleInit for automatic connection
-- Implemented onModuleDestroy for graceful shutdown
-- Created prisma.module.ts as Global module
-- Imported PrismaModule in AppModule
+Set up JWT authentication with environment-based configuration:
+- Imported JwtModule in AuthModule with registerAsync
+- Used ConfigService to read JWT_SECRET and JWT_EXPIRATION from .env
+- Configured signOptions with 7-day token expiration
+- Added fallback defaults for development safety
+- Exported AuthService for use in other modules
 
-PrismaService now available for dependency injection across entire app.
+JwtService now available for token generation and verification.
 Verified with successful npm run build (all workspaces).
