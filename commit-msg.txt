@@ -1,11 +1,11 @@
-feat(auth): create auth module structure
+feat(auth): configure JWT module with async factory
 
-Generated NestJS auth module, controller, and service using CLI.
-This establishes the foundation for authentication implementation.
+Set up JWT authentication with environment-based configuration:
+- Imported JwtModule in AuthModule with registerAsync
+- Used ConfigService to read JWT_SECRET and JWT_EXPIRATION from .env
+- Configured signOptions with 7-day token expiration
+- Added fallback defaults for development safety
+- Exported AuthService for use in other modules
 
-- auth.module.ts: Module container for auth functionality
-- auth.controller.ts: HTTP endpoint handler for /api/auth routes
-- auth.service.ts: Business logic layer for authentication
-- app.module.ts: Auto-imported AuthModule
-
-Task 1.2 complete - ready for Prisma service and JWT configuration.
+JwtService now available for token generation and verification.
+Verified with successful npm run build (all workspaces).
